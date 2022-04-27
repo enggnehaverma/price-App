@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="container">
+    <h1>Index</h1>
+        <br/>
+        <li><a href="{{ url_for('pricing') }}"  >Pricing</a>
+            <br/>
+                    This section is used for calculating the price of the product, chosen by giving the products details, in different currencies by using the public API.
+            <br/>
+                    By default currency is taken as euro.
+        <br/>
+        <br/>
+        <li><a href="{{ url_for('exc_rate') }}">Exchange Rate</a>
+        <br/>
+                    This section is used to convert the amount in different currencies. We have to provide the valid currencies.
+
+        <br/>
+        <br/>
+        <li><a href="{{ url_for('product_list') }}">Product List</a>
+        <br/>
+                    This section is used for adding or deleting the product details into the database.
+
+        </div>
+
+ {% endblock %}
+

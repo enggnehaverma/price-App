@@ -1,0 +1,18 @@
+ {% extends 'base.html' %}
+
+  {% block content %}
+    <div class="container">
+    <h1>Pricing</h1>
+        <br/>
+        <form action="/form" METHOD="POST">
+           <input type="text" placeholder="Choose an item" name="item">
+            <input type="number" placeholder="Enter ID" name="id">
+            <input type="number"  placeholder="Enter Quantity" name="qty">
+            <br/>
+            <br/>
+            <input type="submit" value="Submit" class="btn btn-secondary"/>
+            <input type="reset"  value="RESET" style="color: red;" class="btn btn-secondary"/>
+        </form>
+
+        </div>
+  {% endblock %}

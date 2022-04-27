@@ -1,0 +1,26 @@
+ {% extends 'base.html' %}
+
+  {% block content %}
+    <div class="container">
+    <h1>List of Product Items</h1>
+        <br/>
+        <form action="/productlist" METHOD="POST">
+            <input type="text" placeholder="Product Name" name="name">
+            <input type="number"  placeholder="Price Per Unit" name="price">
+            <input type="submit" value="Add" class="btn btn-secondary">
+            <input type="submit" value="Delete" class="btn btn-secondary">
+        </form>
+        <br/>
+
+        {% for new_list in new_list %}
+            <h4>
+                {{ new_list.prod_name }}
+                {{ new_list.prod_id}}
+                {{ new_list.price_per_unit }}
+                {{ new_list.date_created }}
+
+            </h4>
+        {% endfor %}
+
+        </div>
+  {% endblock %}

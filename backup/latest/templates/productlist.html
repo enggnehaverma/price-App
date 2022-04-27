@@ -1,0 +1,30 @@
+ {% extends 'base.html' %}
+
+  {% block content %}
+    <div class="container">
+    <h1>List of Product Items</h1>
+        <br/>
+        <h6 style="color:grey;">
+        Enter the product name and price per unit to make an entry in database and click the delete button to delete from the database
+        <h6>
+        <br/>
+        <form action="/productlist" METHOD="POST">
+            <input type="text" placeholder="Product Name" name="name" required>
+            <input type="number"  placeholder="Price Per Unit" name="price" required>
+            <input type="submit" value="Add" class="btn btn-secondary">
+
+        </form>
+
+        <br/>
+
+        {% for new_list in new_list %}
+            <h5>
+                ProdName:     {{ new_list.prod_name }} ||
+                ProdId:      {{ new_list.prod_id}} ||
+                PricePerUnit: {{ new_list.price_per_unit }} ||
+                CreatedDate:  {{ new_list.date_created }}   <a href="/delete/{{ new_list.prod_id }}" class="btn btn-outline-danger btn-sm" onclick="return confirm('Please confirm to delete from database')">Delete</a>
+
+            </h5>
+        {% endfor %}
+        </div>
+  {% endblock %}

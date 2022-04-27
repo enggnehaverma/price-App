@@ -1,0 +1,24 @@
+{% extends 'pricing.html' %}
+
+{% block content %}
+    <div class="container">
+    <h1>Pricing</h1>
+        <br/>
+        <form action="/error" METHOD="POST">
+           <input type="text" placeholder="Choose an item" name="item" >
+            <input type="number" placeholder="Enter ID" name="id" >
+            <input type="number"  placeholder="Enter Quantity" name="qty">
+            <input type="text"  placeholder="Enter Currency" name="currency" >
+            <br/>
+            <br/>
+            <input type="submit" value="Submit" class="btn btn-secondary"/>
+            <input type="reset"  value="RESET" style="color: red;" class="btn btn-secondary"/>
+        </form>
+        <br/>
+            Please enter correct Product ID
+        <br/>
+            For Product ID, please follow <a href="{{ url_for('product_list') }}">this link</a>
+
+
+        </div>
+  {% endblock %}

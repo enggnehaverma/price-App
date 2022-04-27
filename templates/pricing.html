@@ -1,0 +1,25 @@
+ {% extends 'base.html' %}
+
+  {% block content %}
+    <div class="container">
+    <h1>Pricing</h1>
+        <br/>
+
+        Please enter product name, quantity and the currency in which the price needs to be calculated.
+        <br/>
+        <br/>
+        <form action="/form" METHOD="POST">
+           <input type="text" placeholder="Choose Product" name="item" required>
+           <!-- <input type="number" placeholder="Enter Product ID" name="id" required> -->
+            <input type="number"  placeholder="Qty" name="qty" max="100" min="1"  required>
+            <input type="text"  placeholder="Enter Currency" name="currency"  required>
+            <br/>
+            <br/>
+            <input type="submit" value="Submit" class="btn btn-secondary" />
+            <input type="reset"  value="RESET" style="color: red;" class="btn btn-secondary"/>
+        </form>
+        <br/>
+        For Product Details, please follow <a href="{{ url_for('product_list') }}">this link</a>
+
+        </div>
+  {% endblock %}
