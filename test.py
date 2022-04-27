@@ -1,5 +1,5 @@
 import unittest
-from server import app
+from app import app
 import requests
 
 URL = "http://127.0.0.1:5000"
