@@ -4,7 +4,10 @@ import requests
 from datetime import datetime
 from forex_python.converter import CurrencyRates, CurrencyCodes
 
-app = Flask(__name__)   # Creating our Flask Instance
+# Creating our Flask Instance
+app = Flask(__name__)
+
+# Setting up the configurations for SQLAlchemy
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///items.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # Initialize the database
@@ -23,6 +26,7 @@ class Items(db.Model):
     def __repr__(self):
         return f'<Items {self.prod_name}'
 
+
 @app.route('/productlist', methods=['POST', 'GET'])
 def product_list():
     if request.method == "POST":
@@ -39,10 +43,10 @@ def product_list():
 
 @app.route('/pricing', methods=['POST', 'GET'])
 def pricing():
-        return render_template('pricing.html')
+    return render_template('pricing.html')
 
 
-@app.route('/form', methods = ['POST'])
+@app.route('/form', methods=['POST'])
 def form():
     try:
         tot_price = 0
@@ -60,7 +64,7 @@ def form():
                 if currency.upper() not in exc_rate:
                     error_statement = "Please enter valid currency"
                     return render_template('form.html', error_statement=error_statement)
-                exc_amount = round((tot_price * exc_rate[currency.upper()]),2)
+                exc_amount = round((tot_price * exc_rate[currency.upper()]), 2)
                 return render_template('form.html', input_item=input_item, qty=qty, tot_price=tot_price,
                                        currency=currency, exc_amount=exc_amount, new_list=new_list)
         return render_template('error.html')
@@ -113,7 +117,8 @@ def exc_rate():
             amount = float(request.form['amount'])
             to_curr = request.form['to_curr'].upper()
             result = round(rates.convert(from_curr, to_curr, amount), 2)
-            return render_template('excratemessage.html', amount=amount, from_curr=from_curr, to_curr=to_curr, result=result, symbol=symbol)
+            return render_template('excratemessage.html', amount=amount, from_curr=from_curr, to_curr=to_curr,
+                                   result=result, symbol=symbol)
         else:
             return render_template('excrate.html')
     except RatesNotAvailableError as err1:
